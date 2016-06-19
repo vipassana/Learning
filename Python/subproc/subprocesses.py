@@ -1,12 +1,12 @@
 '''
-Code to spawn a subprocess that monitors stdin while parent does other things
+Code playing with subprocess
 '''
 import subprocess
 import time
 
 if __name__ == '__main__':
     i=0
-    ip_tracker = subprocess.Popen(raw_input)
+    subprocess.Popen(['python', 'child.py'], shell=True, stdin=subprocess.PIPE)
     while True:
         print i
         i += 1
