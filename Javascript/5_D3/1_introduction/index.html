@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<ul>
+</ul>
+</body>
+
+<script>
+let list= d3.select("ul");
+var cars = [
+  {name:"Toyota", price: 50000},
+  {name:"BMW", price:75000},
+  {name:"Tesla", price: 60000}
+];
+
+function add(){
+  for(let i=0; i<3; i++){
+  	list.append("li").text(cars[i].name)
+  }
+}
+
+add()
+add()
+console.log(list.selectAll("li").size())
+</script>

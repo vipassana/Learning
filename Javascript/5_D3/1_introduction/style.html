@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+<div>
+  <h1> Welcome to D3 for data Visualization </h1>
+  <p id="para" style="color:black"> In this course, we will learn how to create….  </p>
+  <a href="url01"> video 1 </a>
+  <a href="url02"> video 2 </a>
+
+</div>
+</body>
+<script>
+let object = d3.select("#para");
+
+function change(){
+	let color = object.style("color")
+  console.log(color)
+	if(color !== "black"){
+		object.style("color", "green")
+	}
+}
+
+change()
+</script>
