@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+
+    </div>
+  </body>
+  <script>
+
+    function write(text){
+      d3.select("#container").append("p").text(text);
+    }
+
+    d3.csv("data.csv").then(function (data){
+      //Sorting data
+      data.sort((a, b) => { return d3.ascending (a.Name, b.Name)} );
+
+      young = data.filter( d => {
+        return d.Age>= 30
+      });
+      for (let client of young){
+        write(client.Name)
+      }
+      let age = data.map( person => { return +person.Age})
+
+      //Possible with d3.sum, mean, min, max, extent
+      let sum = age.reduce( (a,b) => {return a+b}, 0)
+
+
+      console.log("Average age through js: " + sum/age.length)
+
+      let meanAge = d3.mean(data, d => +d.Age)
+      write("Average age through d3: " + meanAge)
+
+      let extentAge = d3.mean(data, d => +d.Age)
+      write("Range of age through d3: " + meanAge)
+
+
+
+    });
+
+
+
+  </script>
+
+</html>
