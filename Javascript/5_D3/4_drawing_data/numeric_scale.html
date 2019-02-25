@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  
+    <div id="container"></div>
+</body>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+
+    let container = d3.select("#container");
+    d3.csv('data/data.csv').then(showData);
+
+    function showData(clients) {
+
+        let max = d3.max(clients, d => d.Weight);
+        let scale = d3.scaleLinear().range([0,200]).domain([0, max]);
+
+        let join = container.selectAll("div").data(clients);
+        join.enter()
+            .append('div')
+            .text(d => d.Name)
+            .style('background-color', '#4885ed')
+            .style('color', 'white')
+            .style('margin', '5px')
+            .style('width', d => scale(d.Weight));
+        //join.exit().remove();
+        //join.text(d => d.Name );
+
+    }
+    //showData(clients)
+
+
+</script>
+
+</html>
